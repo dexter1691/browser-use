@@ -1233,6 +1233,8 @@
       return id;
     }
 
+    const rect = getCachedBoundingRect(node); // Keep for initial quick check
+
     // Quick checks for element nodes
     if (node.nodeType === Node.ELEMENT_NODE && !isElementAccepted(node)) {
       if (debugMode) PERF_METRICS.nodeMetrics.skippedNodes++;
@@ -1241,7 +1243,6 @@
 
     // Early viewport check - only filter out elements clearly outside viewport
     if (viewportExpansion !== -1) {
-      const rect = getCachedBoundingRect(node); // Keep for initial quick check
       const style = getCachedComputedStyle(node);
 
       // Skip viewport check for fixed/sticky elements as they may appear anywhere
@@ -1270,7 +1271,7 @@
       attributes: {},
       xpath: getXPathTree(node, true),
       children: [],
-      viewPort: {
+      viewportCoordinates: {
         top_left: { x: rect.left, y: rect.top },
         top_right: { x: rect.right, y: rect.top },
         bottom_left: { x: rect.left, y: rect.bottom },
