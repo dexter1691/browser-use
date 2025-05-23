@@ -1270,6 +1270,15 @@
       attributes: {},
       xpath: getXPathTree(node, true),
       children: [],
+      viewPort: {
+        top_left: { x: rect.left, y: rect.top },
+        top_right: { x: rect.right, y: rect.top },
+        bottom_left: { x: rect.left, y: rect.bottom },
+        bottom_right: { x: rect.right, y: rect.bottom },
+        center: { x: Math.floor(rect.left + rect.width / 2), y: Math.floor(rect.top + rect.height / 2) },
+        width: rect.width,
+        height: rect.height
+      }
     };
 
     // Get attributes for interactive elements or potential text containers
