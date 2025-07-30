@@ -92,8 +92,9 @@ CHROME_DOCKER_ARGS = [
 	'--disable-setuid-sandbox',
 	'--disable-dev-shm-usage',
 	'--no-xshm',
-	'--no-zygote',
-	'--single-process',
+	# Removed problematic flags that cause browser instability:
+	# '--no-zygote',      # Can cause stability issues
+	# '--single-process', # Forces single-process mode, very unstable
 ]
 
 CHROME_DISABLE_SECURITY_ARGS = [
